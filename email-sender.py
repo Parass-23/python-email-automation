@@ -1,5 +1,6 @@
 import smtplib
 from email.message import EmailMessage
+from getpass import getpass
 
 sender_email = input("Enter your email: ")
 receiver_email = input("Enter receiver email: ")
@@ -16,7 +17,7 @@ try:
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
 
-        password = input("Enter your email app password: ")
+        password = getpass("Enter your email app password: ")
         server.login(sender_email, password)
 
         server.send_message(email)
